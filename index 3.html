@@ -1,0 +1,133 @@
+
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>八月芮塔命定能量美甲</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      background: #fff9f5;
+      padding: 2em;
+      text-align: center;
+      color: #5a4a42;
+    }
+    button {
+      padding: 0.8em 1.5em;
+      font-size: 1.2em;
+      background: #e9cba7;
+      color: #3d2b1f;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      margin-top: 1em;
+      transition: transform 0.2s ease;
+    }
+    button:hover {
+      transform: scale(1.05);
+    }
+    .card {
+      margin-top: 2em;
+      background: #fff;
+      padding: 1.5em;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      display: none;
+      animation: fadeIn 0.8s ease-in-out;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .card h2 {
+      margin-bottom: 0.3em;
+      font-size: 1.6em;
+    }
+    .card p {
+      font-size: 1.1em;
+      line-height: 1.6;
+    }
+    .card img {
+      width: 200px;
+      border-radius: 8px;
+      margin: 1em auto;
+      display: block;
+    }
+    .cta {
+      margin-top: 1em;
+      display: inline-block;
+      background-color: #ffdbc7;
+      padding: 0.6em 1.2em;
+      border-radius: 8px;
+      text-decoration: none;
+      color: #3d2b1f;
+      font-weight: bold;
+      transition: background 0.3s;
+    }
+    .cta:hover {
+      background-color: #f5c3a0;
+    }
+  </style>
+</head>
+<body>
+  <h1>💅 芮塔八月命定能量美甲</h1>
+  <p>點一下，讓塔羅幫你選出專屬於你的八月能量款式 ✨</p>
+  <button onclick="drawCard()">抽一張命定牌</button>
+
+  <div class="card" id="result"></div>
+
+  <script>
+    const cards = [
+      {
+        title: "☀️ 太陽牌｜橘光暈染鏡面款",
+        message: "你正在發光發熱，別害怕被看見。<br><br><strong>靈感設計：</strong> 蜜橘暈染 × 金橘鏡面，為熱情與行動力而生。",
+        image: "https://example.com/images/sun.jpg",
+        link: "https://lin.ee/1Gs0ux8"
+      },
+      {
+        title: "🌙 女祭司牌｜靜謐奶茶銀霧款",
+        message: "慢一點、再觀察一下。你的直覺永遠比你想得更準確。<br><br><strong>靈感設計：</strong> 奶茶米色 × 銀灰霧面，柔中帶冷的智慧氣質。",
+        image: "https://example.com/images/priestess.jpg",
+        link: "https://lin.ee/1Gs0ux8"
+      },
+      {
+        title: "💖 戀人牌｜柔粉晶光琉璃款",
+        message: "八月，是愛與選擇的月份。記得選讓你心跳的，不是讓你委屈的。<br><br><strong>靈感設計：</strong> 裸粉漸層 × 晶光貓眼，戀愛中的溫柔與閃耀。",
+        image: "https://example.com/images/lovers.jpg",
+        link: "https://lin.ee/1Gs0ux8"
+      },
+      {
+        title: "🌪️ 塔牌｜灰黑線條碰撞款",
+        message: "混亂來，是為了打破限制你的框。八月，請勇敢拆掉那些舊模式。<br><br><strong>靈感設計：</strong> 灰黑霧透 × 幾何金屬線，解構風格重組自我。",
+        image: "https://example.com/images/tower.jpg",
+        link: "https://lin.ee/1Gs0ux8"
+      },
+      {
+        title: "🌱 節制牌｜薄荷微光水波款",
+        message: "不是所有事情都要急著解決。保持流動，比什麼都重要。<br><br><strong>靈感設計：</strong> 薄荷綠 × 晶透暈染，像清晨露珠滑過指尖。",
+        image: "https://example.com/images/temperance.jpg",
+        link: "https://lin.ee/1Gs0ux8"
+      },
+      {
+        title: "🐚 星星牌｜裸粉珍珠月光款",
+        message: "願你記得，你是溫柔且有力量的。<br><br><strong>靈感設計：</strong> 裸粉色系 × 細閃珍珠粉，宛如夜裡的月光為你閃耀。",
+        image: "https://example.com/images/star.jpg",
+        link: "https://lin.ee/1Gs0ux8"
+      }
+    ];
+
+    function drawCard() {
+      const random = cards[Math.floor(Math.random() * cards.length)];
+      const result = document.getElementById('result');
+      result.innerHTML = `
+        <h2>${random.title}</h2>
+        <img src="${random.image}" alt="${random.title}">
+        <p>${random.message}</p>
+        <a class="cta" href="${random.link}" target="_blank">➡ 立即預約這款美甲</a>
+      `;
+      result.style.display = 'block';
+    }
+  </script>
+</body>
+</html>
