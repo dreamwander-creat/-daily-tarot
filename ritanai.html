@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RITANAIL｜戀愛指尖測驗</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;600;700&display=swap');
+
+body {
+font-family: 'Noto Sans TC', sans-serif;
+}
+
+.gradient-bg {
+background: linear-gradient(135deg, #ffeef8 0%, #f8e8ff 50%, #ffe8f0 100%);
+}
+
+.card-hover {
+transition: all 0.3s ease;
+}
+
+.card-hover:hover {
+transform: translateY(-8px);
+box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+}
+
+.nail-card {
+aspect-ratio: 1;
+cursor: pointer;
+transition: all 0.3s ease;
+}
+
+.nail-card:hover {
+transform: scale(1.05);
+}
+
+.nail-card.selected {
+transform: scale(1.1);
+box-shadow: 0 0 0 4px #ff69b4;
+}
+
+.fade-in {
+animation: fadeIn 0.6s ease-in;
+}
+
+@keyframes fadeIn {
+from { opacity: 0; transform: translateY(20px); }
+to { opacity: 1; transform: translateY(0); }
+}
+
+.slide-up {
+animation: slideUp 0.5s ease-out;
+}
+
+@keyframes slideUp {
+from { opacity: 0; transform: translateY(30px); }
+to { opacity: 1; transform: translateY(0); }
+}
+
+.vibrating-heart-1 {
+animation: vibrate1 0.8s ease-in-out infinite;
+transform-origin: center;
+}
+
+.vibrating-heart-2 {
+animation: vibrate2 0.8s ease-in-out infinite;
+transform-origin: center;
+}
+
+@keyframes vibrate1 {
+0%, 100% { transform: translate(0, 0) rotate(0deg) scale(1); }
+25% { transform: translate(-1px, -1px) rotate(-1deg) scale(1.05); }
+50% { transform: translate(1px, 0px) rotate(1deg) scale(0.95); }
+75% { transform: translate(0px, 1px) rotate(-0.5deg) scale(1.02); }
+}
+
+@keyframes vibrate2 {
+0%, 100% { transform: translate(0, 0) rotate(0deg) scale(1); }
+25% { transform: translate(1px, 1px) rotate(1deg) scale(0.95); }
+50% { transform: translate(-1px, 0px) rotate(-1deg) scale(1.05); }
+75% { transform: translate(0px, -1px) rotate(0.5deg) scale(0.98); }
+}
+
+.sparkle-1 {
+animation: sparkle1 1.5s ease-in-out infinite;
+}
+
+.sparkle-2 {
+animation: sparkle2 1.2s ease-in-out infinite;
+}
+
+.sparkle-3 {
+animation: sparkle3 1.8s ease-in-out infinite;
+}
+
+@keyframes sparkle1 {
+0%, 100% { opacity: 0.3; transform: scale(1); }
+50% { opacity: 1; transform: scale(1.3); }
+}
+
+@keyframes sparkle2 {
+0%, 100% { opacity: 0.5; transform: scale(0.8); }
+50% { opacity: 1; transform: scale(1.2); }
+}
+
+@keyframes sparkle3 {
+0%, 100% { opacity: 0.4; transform: scale(1.1); }
+50% { opacity: 1; transform: scale(1.4); }
+}
+</style>
+</head>
+<body class="gradient-bg min-h-screen">
+<div class="container mx-auto px-4 py-8 max-w-md">
+<!-- Cover Page -->
+<div id="coverPage" class="text-center fade-in">
+<div class="mb-8">
+<h1 class="text-3xl font-bold text-gray-800 mb-2">RITANAIL</h1>
+<div class="w-16 h-1 bg-pink-400 mx-auto rounded-full"></div>
+</div>
+
+<div class="bg-white rounded-3xl p-8 shadow-lg mb-6">
+<h2 class="text-2xl font-bold text-gray-800 mb-4">戀愛指尖測驗</h2>
+<p class="text-pink-500 font-medium mb-6">情人節特別版｜憑直覺選一張圖，揭曉你的戀愛人格</p>
+
+<div class="mb-8">
+<div class="w-32 h-32 mx-auto mb-6 bg-gradient-to-br from-pink-100 to-purple-100 rounded-full flex items-center justify-center shadow-lg">
+<svg width="80" height="80" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+<!-- First vibrating heart -->
+<g class="vibrating-heart-1">
+<path d="M35 70 C15 50, 5 30, 20 18 C27 12, 35 18, 35 18 C35 18, 43 12, 50 18 C65 30, 55 50, 35 70 Z" fill="#ff69b4"/>
+<!-- Cute face -->
+<circle cx="30" cy="35" r="1" fill="#fff"/>
+<circle cx="40" cy="35" r="1" fill="#fff"/>
+<path d="M30 42 Q35 45 40 42" stroke="#fff" stroke-width="1" fill="none" stroke-linecap="round"/>
+</g>
+
+<!-- Second vibrating heart -->
+<g class="vibrating-heart-2">
+<path d="M65 70 C45 50, 35 30, 50 18 C57 12, 65 18, 65 18 C65 18, 73 12, 80 18 C95 30, 85 50, 65 70 Z" fill="#ff1493"/>
+<!-- Cute face -->
+<circle cx="60" cy="35" r="1" fill="#fff"/>
+<circle cx="70" cy="35" r="1" fill="#fff"/>
+<path d="M60 42 Q65 45 70 42" stroke="#fff" stroke-width="1" fill="none" stroke-linecap="round"/>
+</g>
+
+<!-- Sparkles around hearts -->
+<circle cx="20" cy="25" r="1.5" fill="#ffd700" class="sparkle-1"/>
+<circle cx="80" cy="20" r="1" fill="#ffd700" class="sparkle-2"/>
+<circle cx="85" cy="40" r="1.5" fill="#ffd700" class="sparkle-3"/>
+<circle cx="15" cy="45" r="1" fill="#ffd700" class="sparkle-1"/>
+<circle cx="50" cy="10" r="1" fill="#ffd700" class="sparkle-2"/>
+</svg>
+</div>
+</div>
+
+<p class="text-gray-600 mb-8 leading-relaxed">今年情人節，讓美甲為你揭曉愛情中的角色！憑直覺選擇最喜歡的一張圖，就能知道你的戀愛人格哦♡</p>
+
+<button onclick="showInstructions()" class="bg-pink-500 hover:bg-pink-600 text-white font-medium py-4 px-8 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg">
+👉 點我開始測驗
+</button>
+</div>
+</div>
+
+<!-- Instructions Page -->
+<div id="instructionsPage" class="hidden text-center">
+<div class="bg-white rounded-3xl p-8 shadow-lg mb-6">
+<h2 class="text-2xl font-bold text-gray-800 mb-8">玩法說明</h2>
+
+<div class="space-y-6 mb-8">
+<div class="flex items-center space-x-4">
+<div class="w-10 h-10 bg-pink-100 rounded-full flex items-center justify-center text-pink-500 font-bold">1</div>
+<p class="text-gray-700">滑動瀏覽 9 張圖卡</p>
+</div>
+<div class="flex items-center space-x-4">
+<div class="w-10 h-10 bg-pink-100 rounded-full flex items-center justify-center text-pink-500 font-bold">2</div>
+<p class="text-gray-700">憑第一直覺選出最喜歡的圖</p>
+</div>
+<div class="flex items-center space-x-4">
+<div class="w-10 h-10 bg-pink-100 rounded-full flex items-center justify-center text-pink-500 font-bold">3</div>
+<p class="text-gray-700">點開解析頁，看看你是什麼戀愛人格！</p>
+</div>
+</div>
+
+<button onclick="startQuiz()" class="bg-pink-500 hover:bg-pink-600 text-white font-medium py-4 px-8 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg">
+👉 點我開始
+</button>
+</div>
+</div>
+
+<!-- Quiz Page -->
+<div id="quizPage" class="hidden">
+<div class="text-center mb-6">
+<h2 class="text-xl font-bold text-gray-800 mb-2">選擇你最喜歡的美甲設計</h2>
+<p class="text-gray-600">憑第一直覺選擇吧！</p>
+</div>
+
+<div class="grid grid-cols-3 gap-4 mb-8">
+<div class="nail-card bg-gradient-to-br from-pink-100 to-pink-200 rounded-2xl p-4 flex items-center justify-center" onclick="selectResult('healing')">
+<div class="text-4xl">🐰</div>
+</div>
+<div class="nail-card bg-gradient-to-br from-purple-100 to-purple-200 rounded-2xl p-4 flex items-center justify-center" onclick="selectResult('dreamy')">
+<div class="text-4xl">🎀</div>
+</div>
+<div class="nail-card bg-gradient-to-br from-green-100 to-green-200 rounded-2xl p-4 flex items-center justify-center" onclick="selectResult('fresh')">
+<div class="text-4xl">🐱</div>
+</div>
+<div class="nail-card bg-gradient-to-br from-blue-100 to-blue-200 rounded-2xl p-4 flex items-center justify-center" onclick="selectResult('reserved')">
+<div class="text-4xl">🧸</div>
+</div>
+<div class="nail-card bg-gradient-to-br from-orange-100 to-orange-200 rounded-2xl p-4 flex items-center justify-center" onclick="selectResult('adventurous')">
+<div class="text-4xl">🦋</div>
+</div>
+<div class="nail-card bg-gradient-to-br from-gray-100 to-gray-200 rounded-2xl p-4 flex items-center justify-center" onclick="selectResult('rational')">
+<div class="text-4xl">🍓</div>
+</div>
+<div class="nail-card bg-gradient-to-br from-red-100 to-red-200 rounded-2xl p-4 flex items-center justify-center" onclick="selectResult('passionate')">
+<div class="text-4xl">🐶</div>
+</div>
+<div class="nail-card bg-gradient-to-br from-yellow-100 to-yellow-200 rounded-2xl p-4 flex items-center justify-center" onclick="selectResult('gentle')">
+<div class="text-4xl">🌸</div>
+</div>
+<div class="nail-card bg-gradient-to-br from-pink-100 via-purple-100 to-blue-100 rounded-2xl p-4 flex items-center justify-center" onclick="selectResult('romantic')">
+<div class="text-4xl">🦄</div>
+</div>
+</div>
+</div>
+
+<!-- Result Page -->
+<div id="resultPage" class="hidden">
+<div class="bg-white rounded-3xl p-8 shadow-lg mb-6 text-center">
+<div id="resultContent"></div>
+
+<div class="mt-8 pt-6 border-t border-gray-100">
+<p class="text-gray-700 mb-4">找到你的戀愛人格了嗎？</p>
+<p class="text-gray-600 mb-6">讓愛情指尖更有故事感，這個情人節一起換上專屬的戀愛美甲吧！</p>
+
+<a href="https://lin.ee/JU5DSgN" target="_blank" class="inline-block bg-green-500 hover:bg-green-600 text-white font-medium py-4 px-8 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg">
+👉 點我預約芮塔美甲 LINE
+</a>
+</div>
+</div>
+
+<div class="text-center">
+<button onclick="restartQuiz()" class="bg-pink-500 hover:bg-pink-600 text-white font-medium py-3 px-6 rounded-full transition-all duration-300">
+重新測驗
+</button>
+</div>
+</div>
+</div>
+
+<script>
+const results = {
+healing: {
+title: "療癒型情人",
+description: "你像夜燈般溫暖，總能用傾聽與陪伴撫平對方的情緒，默默守護，給人最柔軟的安心感。",
+emoji: "🌙",
+color: "from-pink-400 to-pink-500"
+},
+dreamy: {
+title: "夢幻型情人",
+description: "你愛得可愛又甜美，像戀愛裡的甜點師，總是製造驚喜與浪漫，讓人無法不愛上你。",
+emoji: "🧁",
+color: "from-purple-400 to-purple-500"
+},
+fresh: {
+title: "清新型情人",
+description: "你不黏人卻貼心，像一口薄荷般讓人清爽舒適，愛得自然又讓人依賴。",
+emoji: "🌿",
+color: "from-green-400 to-green-500"
+},
+reserved: {
+title: "內斂型情人",
+description: "你不擅甜言蜜語，但愛得很深，像日記裡的每一頁，低調卻滿是愛的細節。",
+emoji: "📖",
+color: "from-blue-400 to-blue-500"
+},
+adventurous: {
+title: "冒險型情人",
+description: "你是戀愛裡的驚喜製造機，活潑有趣、熱愛新鮮感，讓愛情像一場永不無聊的冒險。",
+emoji: "🎢",
+color: "from-orange-400 to-orange-500"
+},
+rational: {
+title: "理性型情人",
+description: "你愛得沉穩而可靠，不會被情緒左右，總能成為對方最安心的依靠。",
+emoji: "⚖️",
+color: "from-gray-400 to-gray-500"
+},
+passionate: {
+title: "熱情型情人",
+description: "你愛得直接又濃烈，像杯烈酒，帶著火熱能量，讓人沉醉於你的真心。",
+emoji: "🔥",
+color: "from-red-400 to-red-500"
+},
+gentle: {
+title: "溫柔型情人",
+description: "你愛得像一首詩，細膩、耐心又充滿情感，總能讓人感受到真摯溫暖。",
+emoji: "📝",
+color: "from-yellow-400 to-yellow-500"
+},
+romantic: {
+title: "浪漫幻想者",
+description: "你像初戀般甜美，對愛充滿憧憬與心動，為愛情帶來純粹又閃亮的悸動感。",
+emoji: "💫",
+color: "from-pink-400 via-purple-400 to-blue-400"
+}
+};
+
+function showInstructions() {
+document.getElementById('coverPage').classList.add('hidden');
+document.getElementById('instructionsPage').classList.remove('hidden');
+document.getElementById('instructionsPage').classList.add('slide-up');
+}
+
+function startQuiz() {
+document.getElementById('instructionsPage').classList.add('hidden');
+document.getElementById('quizPage').classList.remove('hidden');
+document.getElementById('quizPage').classList.add('slide-up');
+}
+
+function selectResult(resultType) {
+const result = results[resultType];
+const resultContent = document.getElementById('resultContent');
+
+resultContent.innerHTML = `
+<div class="mb-6">
+<div class="text-6xl mb-4">${result.emoji}</div>
+<h2 class="text-2xl font-bold text-gray-800 mb-4">${result.title}</h2>
+<p class="text-gray-600 leading-relaxed">${result.description}</p>
+</div>
+`;
+
+document.getElementById('quizPage').classList.add('hidden');
+document.getElementById('resultPage').classList.remove('hidden');
+document.getElementById('resultPage').classList.add('slide-up');
+}
+
+function restartQuiz() {
+document.getElementById('resultPage').classList.add('hidden');
+document.getElementById('coverPage').classList.remove('hidden');
+document.getElementById('coverPage').classList.add('fade-in');
+
+// Remove selected states
+document.querySelectorAll('.nail-card').forEach(card => {
+card.classList.remove('selected');
+});
+}
+
+// Add click effects to nail cards
+document.addEventListener('DOMContentLoaded', function() {
+document.querySelectorAll('.nail-card').forEach(card => {
+card.addEventListener('click', function() {
+// Remove selected class from all cards
+document.querySelectorAll('.nail-card').forEach(c => c.classList.remove('selected'));
+// Add selected class to clicked card
+this.classList.add('selected');
+});
+});
+});
+</script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'96452a0736fdb301',t:'MTc1MzM3ODQyMy4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
